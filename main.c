@@ -20,8 +20,8 @@ int main(void)
 {
 	int len;
 	int len2;
-	unsigned int ui;
-	void *addr;
+	/*unsigned int ui;*/
+	/*void *addr;*/
 
 	len = _printf("Let's try to printf a simple sentence.\n");
 	printf("%d\n", len);
@@ -29,11 +29,14 @@ int main(void)
 	len2 = printf("Let's try to printf a simple sentence.\n");
 	printf("%d\n", len2);
 
-	ui = (unsigned int)INT_MAX + 1024;
+	/*ui = (unsigned int)INT_MAX + 1024;*/
 
-	addr = (void *)0x7ffe637541f0;
-	printf("Length:[%d, %i]\n", len2, len2);
-	_printf("Length:[%d, %i]\n", len, len);
+	/*addr = (void *)0x7ffe637541f0;*/
+	/*printf("Length:[%d, %i]\n", len2, len2);
+	  _printf("Length:[%d, %i]\n", len, len);*/
+
+	printf("String:[%s]\n", "I am a string !");
+	_printf("String:[%s]\n", "I am a string !");
 
 	return (0);
 }
@@ -50,8 +53,9 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int lenght = 0, i = 0;
-	char c;
 	char input[3];
+	char *str;
+	package operation;
 /* Initialize _printf arguments's of format*/
 	va_start(args, format);
 	while (format[i] != '\0')
@@ -62,14 +66,13 @@ int _printf(const char *format, ...)
 			input[1] = format[i + 1];
 			input[2] = '\0';
 
-			package operation;
-
 			operation = choose_func(input);
 
 			if (operation.function != NULL)
 			{
 				/*printf("exist\n");*/
-				operation.function(input);
+				str = va_arg(args, char*);
+				operation.function(str, lenght);
 			}
 			else
 			{
@@ -93,9 +96,9 @@ package choose_func(char *input)
 {
 	int i = 0;
 	package options[] = {
-		{print_hexa, "%x"},
+		/*{print_hexa, "%x"},*/
 		{print_string, "%s"},
-		{print_caracter, "%c"},
+		/*{print_caracter, "%c"},
 		{print_float, "%f"},
 		{print_floatExpo, "%e"},
 		{print_floatGeneral, "%g"},
@@ -103,7 +106,7 @@ package choose_func(char *input)
 		{print_sigPorcent, "%%"},
 		{print_numInt, "%i"},
 		{print_numDeci, "%d"},
-		{print_octal, "%o"},
+		{print_octal, "%o"},*/
 		{NULL, NULL}
 	};
 

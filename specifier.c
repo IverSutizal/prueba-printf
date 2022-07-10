@@ -1,23 +1,22 @@
 #include <stdio.h>
 #include "main.h"
 
-void print_caracter(char *input)
+/*void print_caracter(char *input)
 {
     printf("Caracter\n");
-}
+}*/
 
-void print_hexa(char *input)
+/*void print_hexa(char *input)
 {
     printf("hexa\n");
-}
+}*/
 
-void print_string(char *input)
+void print_string(char *argss, int lens)
 {
-    printf("string\n");
+	printf("%s %d\n", argss, lens);
 }
 
-
-void print_float(char *input)
+/*void print_float(char *input)
 {
     printf("float\n");
 }
@@ -56,3 +55,4 @@ void print_octal(char *input)
 {
   printf("octal\n");
 }
+*/
