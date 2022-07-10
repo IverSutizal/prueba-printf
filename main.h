@@ -1,9 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include <stdarg.h>
+
 int _putchar(char c);
 /*void print_caracter(char *input);
- void print_hexa(char *input);*/
+void print_hexa(char *input);*/
 void print_string(char *argss, int lens);
 /*void print_float(char *input);
 void print_floatExpo(char *input);
