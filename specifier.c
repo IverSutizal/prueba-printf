@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "main.h"
-49454131646464
+
 /*void print_caracter(char *input)
 {
     printf("Caracter\n");
