@@ -1,19 +1,34 @@
 #include <stdio.h>
 #include "main.h"
-hola
-/*void print_caracter(char *input)
+
+int print_caracter(va_list argss)
 {
-    printf("Caracter\n");
-}*/
+	char c;
+	int i = 0;
+
+	c = va_arg(argss, int);
+	_putchar(c);
+	i++;
+	return (i);
+}
 
 /*void print_hexa(char *input)
 {
     printf("hexa\n");
 }*/
 
-void print_string(char *argss, int lens)
+int print_string(va_list argss)
 {
-	printf("%s %d\n", argss, lens);
+	char *s;
+	int i = 0;
+
+	s = va_arg(argss, char*);
+	while (s[i] != '\0')
+	{
+		_putchar(s[i]);
+		i++;
+	}
+	return (i);
 }
 
 /*void print_float(char *input)

@@ -20,6 +20,7 @@ int main(void)
 {
 	int len;
 	int len2;
+	int len3, len4, len5, len6;
 	/*unsigned int ui;*/
 	/*void *addr;*/
 
@@ -32,12 +33,21 @@ int main(void)
 	/*ui = (unsigned int)INT_MAX + 1024;*/
 
 	/*addr = (void *)0x7ffe637541f0;*/
-	/*printf("Length:[%d, %i]\n", len2, len2);
-	  _printf("Length:[%d, %i]\n", len, len);*/
+	/*printf("Length:[%d, %i]\n", len2, len2);*/
+	/*  _printf("Length:[%d, %i]\n", len, len);*/
+
+        len3 = printf("Hol%s.", "berton");
+        printf("%d\n", len3);
+        len4 =_printf("Hol%s.", "berton");
+        printf("%d\n", len4);
 
 	printf("String:[%s]\n", "I am a string !");
 	_printf("String:[%s]\n", "I am a string !");
 
+	len5 = printf("Char:[%c]\n", 'H');
+	printf("%d\n", len5);
+	len6 = _printf("Char:[%c]\n", 'H');
+	printf("%d\n", len6);
 	return (0);
 }
 
@@ -52,12 +62,12 @@ int main(void)
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int lenght = 0, i = 0;
+	int len = 0, i = 0;
 	char input[3];
-	char *str;
+	/*char *str;*/
 	package operation;
-/* Initialize _printf arguments's of format*/
-	va_start(args, format);
+
+	va_start(args, format); /* Initialize _printf arguments's of format*/
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
@@ -70,26 +80,26 @@ int _printf(const char *format, ...)
 
 			if (operation.function != NULL)
 			{
+				i = i + 2;
 				/*printf("exist\n");*/
-				str = va_arg(args, char*);
-				operation.function(str, lenght);
+				/*str = va_arg(args, char*);*/
+				len += operation.function(args);
 			}
 			else
 			{
 				printf("operation doesn't exist\n");
 			}
-				i++;
-				lenght--;
 		}
 		else
 		{
 			_putchar(format[i]);
-		}
+
 			i++;
-			lenght++;
+			len++;
+		}
 	}
 	va_end(args);
-	return (lenght);
+	return (len);
 }
 
 package choose_func(char *input)
@@ -98,8 +108,8 @@ package choose_func(char *input)
 	package options[] = {
 		/*{print_hexa, "%x"},*/
 		{print_string, "%s"},
-		/*{print_caracter, "%c"},
-		{print_float, "%f"},
+		{print_caracter, "%c"},
+		/*{print_float, "%f"},
 		{print_floatExpo, "%e"},
 		{print_floatGeneral, "%g"},
 		{print_DecixAsig, "%u"},
