@@ -110,7 +110,13 @@ int print_numInt(va_list argss)
 	return (j);
 }
 /*void print_octal(char *input){printf("octal\n");}*/
-
+/**
+ * convert - Convert number
+ * @num : number to convert
+ * @base : specifier base
+ * Description: Function to convert numbers..
+ * Return: Length of the number.
+ */
 char *convert(unsigned int num, int base)
 {
 	char representation[] = "0123456789ABCDEF";
