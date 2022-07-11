@@ -34,7 +34,10 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				printf("Doesn't exist\n");
+				/*printf("Doesn't exist\n");*/
+				_putchar(format[i]);
+                                i++;
+                                len++;
 			}
 		}
 		else

@@ -23,7 +23,7 @@ int main(void)
 
 	len = _printf("Let's try to printf a simple sentence.\n");
 	printf("%d\n", len);
-	printf("----------------\n");
+	_printf("Hola%k\n", len);
 	len2 = printf("Let's try to printf a simple sentence.\n");
 	printf("%d\n", len2);
 
