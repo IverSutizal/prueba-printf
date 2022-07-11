@@ -114,7 +114,7 @@ int print_numInt(va_list argss)
  * convert - Convert number
  * @num : number to convert
  * @base : specifier base
- * Description: Function to convert numbers..
+ * Description: Function to convert numbers in characters.
  * Return: Length of the number.
  */
 char *convert(unsigned int num, int base)
