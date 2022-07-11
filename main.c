@@ -5,9 +5,6 @@
 #define NULL ((void *)0)
 #include "main.h"
 
-int _printf(const char *format, ...);
-package choose_func(char *input);
-
 /**
  * main - Returns the length of a string.
  *
@@ -20,7 +17,7 @@ int main(void)
 {
 	int len;
 	int len2;
-	int len3, len4, len5, len6;
+	int len3, len4, len5, len6, len7, len8, i, d;
 	/*unsigned int ui;*/
 	/*void *addr;*/
 
@@ -33,13 +30,15 @@ int main(void)
 	/*ui = (unsigned int)INT_MAX + 1024;*/
 
 	/*addr = (void *)0x7ffe637541f0;*/
-	/*printf("Length:[%d, %i]\n", len2, len2);*/
-	/*  _printf("Length:[%d, %i]\n", len, len);*/
+	d = printf("Length:[%d, %i]\n", len2, len2);
+	printf("%d\n", d);
+	i = _printf("Length:[%d, %i]\n", len, len);
+	printf("%d\n", i);
 
-        len3 = printf("Hol%s.", "berton");
-        printf("%d\n", len3);
-        len4 =_printf("Hol%s.", "berton");
-        printf("%d\n", len4);
+	len3 = printf("Hol%s.", "berton");
+	printf("%d\n", len3);
+	len4 = _printf("Hol%s.", "berton");
+	printf("%d\n", len4);
 
 	printf("String:[%s]\n", "I am a string !");
 	_printf("String:[%s]\n", "I am a string !");
@@ -48,85 +47,10 @@ int main(void)
 	printf("%d\n", len5);
 	len6 = _printf("Char:[%c]\n", 'H');
 	printf("%d\n", len6);
+
+	len7 = printf("Percent:[%%]\n");
+	printf("%d\n", len7);
+	len8 = _printf("Percent:[%%]\n");
+	printf("%d\n", len8);
 	return (0);
-}
-
-/**
- * _printf - Produce output according to a format as described below.
- *
- * @format: A string with the format wished.
- *
- * Return: The length of the final string with the format
- */
-
-int _printf(const char *format, ...)
-{
-	va_list args;
-	int len = 0, i = 0;
-	char input[3];
-	/*char *str;*/
-	package operation;
-
-	va_start(args, format); /* Initialize _printf arguments's of format*/
-	while (format[i] != '\0')
-	{
-		if (format[i] == '%')
-		{
-			input[0] = format[i];
-			input[1] = format[i + 1];
-			input[2] = '\0';
-
-			operation = choose_func(input);
-
-			if (operation.function != NULL)
-			{
-				i = i + 2;
-				/*printf("exist\n");*/
-				/*str = va_arg(args, char*);*/
-				len += operation.function(args);
-			}
-			else
-			{
-				printf("operation doesn't exist\n");
-			}
-		}
-		else
-		{
-			_putchar(format[i]);
-
-			i++;
-			len++;
-		}
-	}
-	va_end(args);
-	return (len);
-}
-
-package choose_func(char *input)
-{
-	int i = 0;
-	package options[] = {
-		/*{print_hexa, "%x"},*/
-		{print_string, "%s"},
-		{print_caracter, "%c"},
-		/*{print_float, "%f"},
-		{print_floatExpo, "%e"},
-		{print_floatGeneral, "%g"},
-		{print_DecixAsig, "%u"},
-		{print_sigPorcent, "%%"},
-		{print_numInt, "%i"},
-		{print_numDeci, "%d"},
-		{print_octal, "%o"},*/
-		{NULL, NULL}
-	};
-
-	for (i = 0; options[i].function != NULL; i++)
-	{
-		if (strcmp(options[i].specifier, input) == 0)
-	{
-		/*(*(options)->specifier + 1) == *(input + 1)*/
-		return (options[i]);
-	}
-	}
-	return (options[i]);
 }

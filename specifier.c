@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include "main.h"
 
+char *convert(unsigned int num, int base);
+/**
+ * print_caracter - Specifier
+ * @argss : arguments va_list
+ * Description: Function prints a single character.
+ * Return: Length number.
+ */
 int print_caracter(va_list argss)
 {
 	char c;
@@ -12,11 +19,13 @@ int print_caracter(va_list argss)
 	return (i);
 }
 
-/*void print_hexa(char *input)
-{
-    printf("hexa\n");
-}*/
-
+/*void print_hexa(char *input){printf("hexa\n");}*/
+/**
+ * print_string - Specifier
+ * @argss : arguments va_list
+ * Description: function prints a string of characters.
+ * Return: Length number.
+ */
 int print_string(va_list argss)
 {
 	char *s;
@@ -31,43 +40,90 @@ int print_string(va_list argss)
 	return (i);
 }
 
-/*void print_float(char *input)
+/*void print_float(char *input){printf("float\n");}*/
+/*void print_floatExpo(char *input){printf("floatExpo\n");}*/
+/*void print_floatGeneral(char *input){printf("floatGeneral\n");}*/
+/*void print_DecixAsig(char *input){printf("DecixAsig\n");}*/
+/**
+ * print_sigPorcent - Specifier
+ * @argss : arguments va_list
+ * Description: function prints a percentage character.
+ * Return: Length number 1.
+ */
+int print_sigPorcent(va_list argss __attribute__((unused)))
 {
-    printf("float\n");
+	_putchar('%');
+	return (1);
 }
+/**
+ * print_numDeci - Specifier
+ * @argss : arguments va_list
+ * Description: function prints numbers.
+ * Return: Length of the number.
+ */
+int print_numDeci(va_list argss)
+{
+	int i = 0, j = 0;
+	char *str;
 
-void print_floatExpo(char *input)
-{
-  printf("floatExpo\n");
-}
+	i = va_arg(argss, int);
 
-void print_floatGeneral(char *input)
-{
-  printf("floatGeneral\n");
-}
+	if (i < 0)
+	{
+		i = -i;
+		_putchar('-');
+	}
+	str = convert(i, 10);
+	while (str[j] != '\0')
+	{
+		_putchar(str[j]);
+		j++;
+	}
 
-void print_DecixAsig(char *input)
-{
-    printf("DecixAsig\n");
+	return (j);
 }
+/**
+ * print_numInt - Specifier
+ * @argss : arguments va_list
+ * Description: function prints numbers.
+ * Return: Length of the number.
+ */
+int print_numInt(va_list argss)
+{
+	int i = 0, j = 0;
+	char *str;
 
-void print_sigPorcent(char *input)
-{
-    printf("sigPorcent\n");
-}
+	i = va_arg(argss, int);
 
-void print_numDeci(char *input)
-{
-  printf("numDeci\n");
-}
+	if (i < 0)
+	{
+		i = -i;
+		_putchar('-');
+	}
+	str = convert(i, 10);
+	while (str[j] != '\0')
+	{
+		_putchar(str[j]);
+		j++;
+	}
 
-void print_numInt(char *input)
-{
-  printf("numInt\n");
+	return (j);
 }
+/*void print_octal(char *input){printf("octal\n");}*/
 
-void print_octal(char *input)
+char *convert(unsigned int num, int base)
 {
-  printf("octal\n");
+	char representation[] = "0123456789ABCDEF";
+	char buffer[50];
+	char *ptr;
+
+	ptr = &buffer[49];
+	*ptr = '\0';
+
+	do {
+		*--ptr = representation[num % base];
+		num /= base;
+	} while (num != 0);
+
+	return (ptr);
 }
-*/
