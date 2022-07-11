@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "main.h"
 
-char *convert(unsigned int num, int base);
 /**
  * print_caracter - Specifier
  * @argss : arguments va_list
@@ -56,14 +55,14 @@ int print_sigPorcent(va_list argss __attribute__((unused)))
 	return (1);
 }
 /**
- * print_numDeci - Specifier
+ * print_numDec_Int - Specifier
  * @argss : arguments va_list
  * Description: function prints numbers.
  * Return: Length of the number.
  */
-int print_numDeci(va_list argss)
+int print_numDec_Int(va_list argss)
 {
-	int i = 0, j = 0;
+	int i = 0, j = 0, n = 0;
 	char *str;
 
 	i = va_arg(argss, int);
@@ -72,6 +71,7 @@ int print_numDeci(va_list argss)
 	{
 		i = -i;
 		_putchar('-');
+		n = 1;
 	}
 	str = convert(i, 10);
 	while (str[j] != '\0')
@@ -80,56 +80,6 @@ int print_numDeci(va_list argss)
 		j++;
 	}
 
-	return (j);
-}
-/**
- * print_numInt - Specifier
- * @argss : arguments va_list
- * Description: function prints numbers.
- * Return: Length of the number.
- */
-int print_numInt(va_list argss)
-{
-	int i = 0, j = 0;
-	char *str;
-
-	i = va_arg(argss, int);
-
-	if (i < 0)
-	{
-		i = -i;
-		_putchar('-');
-	}
-	str = convert(i, 10);
-	while (str[j] != '\0')
-	{
-		_putchar(str[j]);
-		j++;
-	}
-
-	return (j);
+	return (j + n);
 }
 /*void print_octal(char *input){printf("octal\n");}*/
-/**
- * convert - Convert number
- * @num : number to convert
- * @base : specifier base
- * Description: Function to convert numbers in characters.
- * Return: Length of the number.
- */
-char *convert(unsigned int num, int base)
-{
-	char representation[] = "0123456789ABCDEF";
-	char buffer[50];
-	char *ptr;
-
-	ptr = &buffer[49];
-	*ptr = '\0';
-
-	do {
-		*--ptr = representation[num % base];
-		num /= base;
-	} while (num != 0);
-
-	return (ptr);
-}

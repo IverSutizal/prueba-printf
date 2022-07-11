@@ -11,18 +11,17 @@
  */
 typedef struct spec_struc
 {
-/*void (*function)(char *input);*/
 	int (*function)(va_list);
 	char *specifier;
 } package;
 
-int _putchar(char c);
-
-/*_printf function*/
+/*_printf function main*/
 int _printf(const char *format, ...);
 package choose_func(char *input);
 
-/*_printf specificiers */
+/*Prototypes*/
+int _putchar(char c);
+char *convert(unsigned int num, int base);
 int print_caracter(va_list argss);
 /*void print_hexa(char *input);*/
 int print_string(va_list argss);
@@ -31,7 +30,7 @@ int print_string(va_list argss);
 /*void print_floatGeneral(char *input);*/
 /*void print_DecixAsig(char *input);*/
 int print_sigPorcent(va_list argss);
-int print_numDeci(va_list argss);
+int print_numDec_Int(va_list argss);
 int print_numInt(va_list argss);
 /*void print_octal(char *input);*/
 #endif

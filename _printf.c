@@ -13,7 +13,6 @@ int _printf(const char *format, ...)
 	va_list args;
 	int len = 0, i = 0;
 	char input[3];
-/*char *str;*/
 	package operation;
 
 	va_start(args, format); /* Initialize _printf arguments's of format \
@@ -34,7 +33,6 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				/*printf("Doesn't exist\n");*/
 				_putchar(format[i]);
                                 i++;
                                 len++;
@@ -62,8 +60,8 @@ package choose_func(char *input)
 /*{print_floatGeneral, "%g"},*/
 /*{print_DecixAsig, "%u"},*/
 		{print_sigPorcent, "%%"},
-		{print_numInt, "%i"},
-		{print_numDeci, "%d"},
+		{print_numDec_Int, "%i"},
+		{print_numDec_Int, "%d"},
 /*{print_octal, "%o"},*/
 		{NULL, NULL}
 	};
